@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Telephone Diary</title>
+</head>
+<body>
+    <h1>Telephone Diary</h1>
+    <a href="{% url 'add_contact' %}">Add New Contact</a><br>
+     <a href="{% url 'logout' %}">Logout</a>
+    <br><br>
+    <form method="get" action="{% url 'telephone_diary' %}">
+        <input type="text" name="search" placeholder="Search by name, state, city, or number">
+        <input type="submit" value="Search">
+    </form>
+    <br>
+     <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Number</th>
+            <th scope="col">State</th>
+            <th scope="col">City</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+             {% for contact in contacts %}
+              <tr>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.number }}</td>
+                <td>{{ contact.state }}</td>
+                <td>{{ contact.city }}</td>
+                <td>
+                    <a href="{% url 'edit_contact' contact.pk %}"><button>Update</button></a><br>
+                </td>
+              </tr>
+             {% endfor %}
+        </tbody>
+     </table>
+<!--    <ul>-->
+<!--        {% for contact in contacts %}-->
+<!--            <li>{{ contact.name }} - {{ contact.number }}</li>-->
+<!--            <a href="{% url 'edit_contact' contact.pk %}"><button>Update</button></a>-->
+<!--        {% endfor %}-->
+<!--    </ul>-->
+
+</body>
+</html>

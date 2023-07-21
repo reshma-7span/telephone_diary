@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Contact</title>
+</head>
+<body>
+    <h1>Update Contact</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Contact</button><br><br>
+    </form>
+    <a href="{% url 'telephone_diary' %}">Back to Contact List</a>
+</body>
+</html>
